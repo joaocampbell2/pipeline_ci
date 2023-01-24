@@ -3,11 +3,12 @@ name : Verify Format
 on: pull_request
 
 jobs: 
-  runs-on: ubuntu-latest
-  strategy: 
-    matrix:
-      elixir: [1.13.4]
-      otp: [25]
+  check_format:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        elixir: [1.13.4]
+        otp: [25]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-elixir@v1
@@ -25,4 +26,3 @@ jobs:
       - name: ==> FORMAT
         run: mix format --check-formatted
 
-      
